@@ -25,8 +25,8 @@ public class FirstAidKitManagementBot extends TelegramLongPollingBot {
         Message message = update.getMessage();
         if (message != null && message.hasText()) {
             switch (message.getText()) {
-                case "/пес":
-                    sendMsg(message, "Сам псина");
+                case "/help":
+                    sendMsg(message, "Hello world");
                     break;
             }
         }
