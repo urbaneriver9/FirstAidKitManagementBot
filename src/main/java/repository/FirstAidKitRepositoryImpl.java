@@ -4,6 +4,7 @@ import models.FirstAidKit;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.internal.SessionFactoryImpl;
 
@@ -13,6 +14,11 @@ public class FirstAidKitRepositoryImpl implements FirstAidKitRepository {
 
     @Override
     public void create(FirstAidKit firstAidKit) {
+        Configuration configuration = new Configuration().configure();
+        configuration.addAnnotatedClass(FirstAidKit.class);
+        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
+        sessionFactory = configuration.buildSessionFactory(builder.build());
+
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
 
@@ -23,7 +29,7 @@ public class FirstAidKitRepositoryImpl implements FirstAidKitRepository {
     }
 
     public static void main(String[] args) {
-        sessionFactory = new Configuration().configure().buildSessionFactory();
+//        sessionFactory = new Configuration().configure().buildSessionFactory();
 
         FirstAidKitRepositoryImpl repository = new FirstAidKitRepositoryImpl();
 

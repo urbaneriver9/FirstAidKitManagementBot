@@ -6,14 +6,19 @@ import java.util.Objects;
 @Entity
 @Table(name = "FIRST_AID_KITS")
 public class FirstAidKit {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID", updatable = false, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     private String login;
     private String password;
+    @Column(name = "last_update_date")
     private String lastUpdateDate;
+
+    public FirstAidKit() {
+
+    }
 
     public FirstAidKit(String name, String login, String password, String lastUpdateDate) {
         this.name = name;
@@ -22,16 +27,8 @@ public class FirstAidKit {
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public FirstAidKit() {
-        
-    }
-
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {
