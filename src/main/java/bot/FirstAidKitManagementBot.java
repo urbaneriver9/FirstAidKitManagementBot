@@ -24,7 +24,7 @@ public class FirstAidKitManagementBot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         Message message = update.getMessage();
         if (message != null && message.hasText()) {
-            switch (message.getText()) {
+            switch (message.getText()) { //todo select menuItem
                 case "/help":
                     sendMsg(message, "Hello world");
                     break;
@@ -45,7 +45,7 @@ public class FirstAidKitManagementBot extends TelegramLongPollingBot {
         }
     }
 
-    public void start() {
+    public void start() { //todo create class Starter or something same
         try {
             TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
             telegramBotsApi.registerBot(new FirstAidKitManagementBot());
