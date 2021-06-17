@@ -3,7 +3,7 @@ package repository;
 import models.FirstAidKit;
 
 public interface FirstAidKitRepository {
-    void create();
+    void create(FirstAidKit firstAidKit);
 
     FirstAidKit get();
 

@@ -1,18 +1,29 @@
 package models;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "FIRST_AID_KITS")
 public class FirstAidKit {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID", updatable = false, nullable = false)
     private long id;
     private String name;
     private String login;
     private String password;
     private String lastUpdateDate;
 
-    public FirstAidKit(String name, String login, String password) {
+    public FirstAidKit(String name, String login, String password, String lastUpdateDate) {
         this.name = name;
         this.login = login;
         this.password = password;
+        this.lastUpdateDate = lastUpdateDate;
+    }
+
+    public FirstAidKit() {
+        
     }
 
     public long getId() {
